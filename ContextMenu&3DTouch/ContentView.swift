@@ -9,8 +9,30 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var counter = 0
+    
     var body: some View {
-        Text("Hello, World!")
+        VStack {
+            Text("\(self.counter)")
+                .padding()
+            Text("Press Hard!")
+                .padding()
+                .contextMenu {
+                    VStack {
+                        Button(action: {
+                            self.counter += 1
+                        }) {
+                            Text("Increment")
+                        }
+                        Button(action: {
+                            self.counter = 0
+                        }) {
+                            Text("Delete")
+                        }
+                        .foregroundColor(Color.red)
+                    }
+            }
+        }
     }
 }
 
